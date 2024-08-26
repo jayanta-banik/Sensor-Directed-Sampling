@@ -1,7 +1,8 @@
 # Sensor-Directed-Sampling
-Implementation of ESAP RSSD in python.
+Implementation of ESAP RSSD in Python.
 
+## Open the Notebook in Colab
 
-## open the ipynb using Colab
+You can open the Colab notebook by clicking on the link below:
 
-open colab notebook <a href="https://colab.research.google.com/drive/14BEou9WtsDhzTWxlYGJiyoPGNqxol2Tu?usp=sharing"> </a>
+[Open Colab Notebook](https://colab.research.google.com/drive/14BEou9WtsDhzTWxlYGJiyoPGNqxol2Tu?usp=sharing)
