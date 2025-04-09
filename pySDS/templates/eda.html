@@ -1,0 +1,51 @@
+<style>
+  .table-container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .scrollable-table-wrapper {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+
+  .table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f1f1f1;
+    z-index: 1;
+    white-space: nowrap;
+  }
+
+  td,
+  th {
+    white-space: nowrap;
+  }
+</style>
+<div class="container mt-5">
+  <h2 class="mb-4">File Parameters</h2>
+  <!-- input for latitude longitude of kind dropdown -->
+</div>
+
+<div class="container mt-4">
+  <div class="table-container">
+    <div class="scrollable-table-wrapper">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr id="TableHeader">
+            <th><input type="checkbox" checked id="selectAll" /></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<span style="cursor: pointer" id="advanceDropdown">
+  Advanced
+  <img class="rotate" src="/static/icons/down.png" id="advanceDropdownIcon" />
+</span>
+<div class="container mt-4 fade-toggle" id="advanceTabEDA">Graphs and more</div>

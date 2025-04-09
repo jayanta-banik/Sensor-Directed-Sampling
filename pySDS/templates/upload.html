@@ -1,0 +1,66 @@
+<div class="container">
+  <h1 class="title">File Upload Portal</h1>
+
+  <!-- Primary File Upload Section -->
+  <div class="upload-section">
+    <h2 class="upload-title mandatory">Upload Primary File</h2>
+    <div class="drop-zone" id="primary-dropzone">
+      <!-- File Preview -->
+      <div class="upload-preview" hidden>
+        <img src="" alt="File Preview" class="upload-preview-img" />
+        <label class="file-label">No file selected</label>
+        <button class="remove-btn" type="button">×</button>
+      </div>
+      <!-- Default Content (Unuploaded State) -->
+      <div class="drop-zone-unuploaded">
+        <img src="/static/icons/document.png" alt="File Icon" class="upload-icon" />
+        <p>Drag and drop your primary file here</p>
+        <p>or</p>
+        <button class="file-btn primary-btn">Select File</button>
+        <input type="file" class="file-input" id="primary-file" hidden accept=".csv,.xlsx,.tsv,.txt" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary File Upload Section -->
+  <div class="upload-section">
+    <h2 class="upload-title">Optionally upload secondary file or enter data in the table</h2>
+    <div class="drop-zone" id="secondary-dropzone">
+      <br />
+      <!-- File Preview -->
+      <div class="upload-preview" hidden>
+        <img src="" alt="File Preview" class="upload-preview-img" />
+        <label class="file-label">No file selected</label>
+        <button class="remove-btn" type="button">×</button>
+      </div>
+      <!-- Default Content (Unuploaded State) -->
+      <div class="drop-zone-unuploaded">
+        <img src="/static/icons/addition.png" alt="Image Icon" class="upload-icon" /><br />
+        Drag and drop your secondary file here <br />or<br />
+        <button class="file-btn secondary-btn">Select File</button>
+        <input type="file" class="file-input" id="secondary-file" hidden accept=".csv,.xlsx,.tsv,.txt" />
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Manual Enter -->
+<!-- <div class="container mt-5">
+  <h2 class="mb-4">Secondary File Table</h2>
+  <table class="table" id="secondary-table">
+    <thead>
+      <tr>
+        <th scope="col">Idx</th>
+        <th scope="col">Latitude</th>
+        <th scope="col">Longitude</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" id="add-row-btn">Add Row</button>
+</div> -->

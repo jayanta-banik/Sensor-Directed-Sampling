@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensor Directed Sampling</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script> -->
+    <link rel="stylesheet" href="/static/css/home.css" />
+  </head>
+
+  <body class="body-cust">
+    <div class="Banner">Sensor Directed Sampling</div>
+    <div class="Navigation mt-4 ms-4">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item d-flex flex-row" role="presentation">
+          <button
+            class="nav-link active nav-button"
+            id="upload-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#upload-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="upload-tab-pane"
+            aria-selected="true"
+          >
+            <div class="d-flex flex-row gap-2">
+              <img src="/static/icons/active_upload.svg" width="25" height="25" alt="upload svg" class="nav-svg-icon" />
+              <div>Upload</div>
+            </div>
+          </button>
+        </li>
+        <li class="nav-item d-flex flex-row" role="presentation">
+          <button
+            class="nav-link nav-button"
+            id="eda-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#eda-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="eda-tab-pane"
+            aria-selected="false"
+            disabled
+          >
+            <div class="d-flex flex-row gap-2">
+              <img src="/static/icons/eda.svg" width="30" height="30" alt="upload svg" class="nav-svg-icon" />
+              <div>EDA</div>
+            </div>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link nav-button"
+            id="parameters-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#parameters-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="parameters-tab-pane"
+            aria-selected="false"
+            disabled
+          >
+            <div class="d-flex flex-row gap-2">
+              <img src="/static/icons/parameters.svg" width="25" height="25" alt="upload svg" class="nav-svg-icon" />
+              <div>Parameters</div>
+            </div>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link nav-button"
+            id="preprocessing-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#preprocessing-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="preprocessing-tab-pane"
+            aria-selected="false"
+            disabled
+          >
+            <div class="d-flex flex-row gap-2">
+              <img src="/static/icons/preprocessing.svg" width="25" height="25" alt="upload svg" class="nav-svg-icon" />
+              <div>Preprocessing</div>
+            </div>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link nav-button"
+            id="pca-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#pca-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="pca-tab-pane"
+            aria-selected="false"
+            disabled
+          >
+            <div class="d-flex flex-row gap-2">
+              <img src="/static/icons/pca.svg" width="25" height="25" alt="upload svg" class="nav-svg-icon" />
+              <div>PCA</div>
+            </div>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link nav-button"
+            id="fit-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#fit-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="fit-tab-pane"
+            aria-selected="false"
+            disabled
+          >
+            <div class="d-flex flex-row gap-2">
+              <img src="/static/icons/fit.svg" width="25" height="25" alt="upload svg" class="nav-svg-icon" />
+              <div>Fit</div>
+            </div>
+          </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link nav-button"
+            id="Summary-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#Summary-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="Summary-tab-pane"
+            aria-selected="false"
+            disabled
+          >
+            <div class="d-flex flex-row gap-2">
+              <img src="/static/icons/summary.svg" width="25" height="25" alt="upload svg" class="nav-svg-icon" />
+              <div>Summary</div>
+            </div>
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content mt-3" id="myTabContent">
+        <div class="tab-pane fade show active" id="upload-tab-pane" role="tabpanel" aria-labelledby="upload-tab" tabindex="0">Upload tab</div>
+        <div class="tab-pane fade" id="eda-tab-pane" role="tabpanel" aria-labelledby="eda-tab" tabindex="0">EDA tab</div>
+        <div class="tab-pane fade" id="parameters-tab-pane" role="tabpanel" aria-labelledby="parameters-tab" tabindex="0">parameters tab</div>
+        <div class="tab-pane fade" id="preprocessing-tab-pane" role="tabpanel" aria-labelledby="preprocessing-tab" tabindex="0">preprocessing tab</div>
+        <div class="tab-pane fade" id="pca-tab-pane" role="tabpanel" aria-labelledby="pca-tab" tabindex="0">PCA tab</div>
+        <div class="tab-pane fade" id="fit-tab-pane" role="tabpanel" aria-labelledby="fit-tab" tabindex="0">fit tab</div>
+        <div class="tab-pane fade" id="summary-tab-pane" role="tabpanel" aria-labelledby="Summary-tab" tabindex="0">Summary tab</div>
+      </div>
+    </div>
+
+    <div class="btn-toolbar m-5 justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group" role="group" aria-label="Previous step">
+        <button type="button" class="btn btn-outline-light">prev</button>
+      </div>
+      <div class="btn-group" role="group" aria-label="Next step">
+        <button type="button" class="btn btn-outline-primary">Next</button>
+      </div>
+    </div>
+
+    <!-- file data -->
+    <filename class="'filename" hidden id="PrimaryFile"></filename>
+    <filename class="'filename" hidden id="SecondayFile"></filename>
+
+    <!-- script to get tab pane htmls -->
+    <script>
+      const nextButton = document.querySelector('.btn-outline-primary');
+      const prevButton = document.querySelector('.btn-outline-light');
+      const tabs = document.querySelectorAll('.nav-link'); // All tab buttons
+      const tabPanes = document.querySelectorAll('.tab-pane'); // All tab contents
+      const navIcons = document.querySelectorAll('.nav-svg-icon'); // All nav icons
+      let dropZones;
+      let metadata = {};
+      metadata.fileData = [];
+
+      document.addEventListener('DOMContentLoaded', async function () {
+        const htmlFiles = {
+          upload: 'upload.html',
+          eda: 'eda.html',
+          parameters: 'parameters.html',
+          preprocessing: 'preprocessing.html',
+          pca: 'pca.html',
+          fit: 'fit.html',
+          summary: 'summary.html',
+        };
+
+        // Function to load all HTML files dynamically
+        const loadPromises = Object.entries(htmlFiles).map(([key, file]) => {
+          return fetch(`/templates/${file}`)
+            .then((response) => response.text())
+            .then((data) => {
+              const tabPane = document.querySelector(`#${key}-tab-pane`);
+              tabPane.innerHTML = data; // Load the HTML content into the tab-pane
+            })
+            .catch((error) => console.error(`Error loading ${file}:`, error));
+        });
+
+        await Promise.all(loadPromises);
+        console.log('All HTML files loaded:'); // Debugging: Check loaded content
+
+        // UPLOAD TAB
+        dropZones = document.querySelectorAll('.drop-zone');
+        dropZones.forEach((zone) => {
+          const fileInput = zone.querySelector('.file-input');
+          const fileButton = zone.querySelector('.file-btn');
+          const uploadPreview = zone.querySelector('.upload-preview');
+          const previewImage = zone.querySelector('.upload-preview-img');
+          const removeButton = zone.querySelector('.remove-btn');
+          const fileLabel = zone.querySelector('.file-label');
+          const unuploadedContent = zone.querySelector('.drop-zone-unuploaded');
+
+          // Show File Preview
+          function showPreview(file) {
+            // Set preview content
+            fileLabel.textContent = file.name;
+
+            // Hide unuploaded content
+            unuploadedContent.hidden = true;
+            uploadPreview.hidden = false;
+
+            // Show image preview for image files
+            if (file.type.startsWith('image/')) {
+              const reader = new FileReader();
+              reader.onload = (e) => {
+                previewImage.src = e.target.result;
+              };
+              reader.readAsDataURL(file);
+            } else {
+              // Use a default icon for non-image files
+              previewImage.src = '/static/icons/document.png';
+            }
+            nextButton.disabled = false;
+          }
+
+          // Reset Drop Zone
+          function resetDropZone() {
+            // Reset file input
+            fileInput.value = '';
+
+            // Restore default content
+            unuploadedContent.hidden = false;
+            uploadPreview.hidden = true;
+
+            // Reset preview content
+            fileLabel.textContent = 'No file selected';
+            previewImage.src = '';
+            nextButton.disabled = true;
+          }
+
+          // Button click triggers file input
+          fileButton.addEventListener('click', () => fileInput.click());
+
+          // Drag and Drop Events
+          zone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            zone.classList.add('dragover');
+          });
+
+          zone.addEventListener('dragleave', () => {
+            zone.classList.remove('dragover');
+          });
+
+          zone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            zone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length) {
+              showPreview(files[0]);
+            }
+          });
+
+          // File Input Change Event
+          fileInput.addEventListener('change', () => {
+            if (fileInput.files.length) {
+              showPreview(fileInput.files[0]);
+            }
+          });
+
+          // Remove File Event
+          removeButton.addEventListener('click', () => resetDropZone());
+        });
+
+        // EDA TAB
+        document.getElementById('advanceDropdown').addEventListener('click', () => {
+          const icon = document.getElementById('advanceDropdownIcon');
+          const advancetab = document.getElementById('advanceTabEDA');
+          icon.classList.toggle('rotate-180');
+          advancetab.classList.toggle('show');
+        });
+
+        // tab switcher
+        const tabFunctions = [
+          async function () {
+            console.log('upload');
+            const columnHeadGenerater = (columnName) => {
+              return `<th><input checked type="checkbox" id="${columnName.toLowerCase()}"/>${columnName}</th>`;
+            };
+            metadata.fileData = [];
+
+            const uploadPromises = Array.from(dropZones).map(async (zone) => {
+              const fileInput = zone.querySelector('.file-input');
+              if (fileInput.files.length) {
+                const formData = new FormData();
+                formData.append('file', fileInput.files[0]);
+
+                try {
+                  const response = await fetch('/save', {
+                    method: 'POST',
+                    body: formData,
+                  });
+                  const data = await response.json();
+                  metadata.fileData.push(data);
+                } catch (error) {
+                  console.error('Error saving file:', error);
+                }
+              }
+            });
+
+            await Promise.all(uploadPromises);
+            console.log('metadata', metadata);
+
+            tableHeader = document.getElementById('TableHeader');
+            tableHeader.innerHTML = '<th><input type="checkbox" checked id="selectAll" /></th>';
+            tableHeader.innerHTML += metadata.fileData[0].columns.map((column) => columnHeadGenerater(column)).join('\n');
+            document.getElementById('selectAll').addEventListener('click', () => {
+              const checkboxes = tableHeader.querySelectorAll('input[type="checkbox"]');
+              checkboxes.forEach((checkbox) => {
+                checkbox.checked = document.getElementById('selectAll').checked;
+              });
+            });
+
+            tableBody = document.querySelector('tbody');
+            tableBody.innerHTML = '';
+            metadata.fileData[0].data.map((row, idx) => {
+              console.log(row);
+              tableBody.innerHTML += `<tr><td><strong>${idx + 1}</strong></td> ${metadata.fileData[0].columns.map((column) => `<td>${row[column]}</td>`).join('\n')} </tr>`;
+            });
+          },
+          function () {
+            console.log('eda');
+          },
+          function () {
+            console.log('parameters');
+          },
+          function () {
+            console.log('preprocessing');
+          },
+          function () {
+            console.log('pca');
+          },
+          function () {
+            console.log('fit');
+          },
+          function () {
+            console.log('summary');
+          },
+        ];
+
+        let activeTabIndex = 0; // Keep track of the currently active tab
+
+        function activateTab(index) {
+          document.querySelector('.nav-link.active').classList.remove('active');
+          document.querySelector('.tab-pane.show.active').classList.remove('show', 'active');
+
+          // Enable the next tab before activating it (Bootstrap requirement)
+          tabs[index].removeAttribute('disabled');
+          //change the source of the image to active_upload.svg;
+          navIcons[index].src = '../static/icons/active_' + navIcons[index].src.split('/').pop();
+          // Trigger Bootstrap's tab switch properly
+          tabs[index].click();
+          // Update active tab index
+          activeTabIndex = index;
+          // Enable/disable navigation buttons as needed
+          prevButton.disabled = activeTabIndex === 0 ? true : false;
+          prevButton.classList.toggle('btn-outline-light', activeTabIndex === 0);
+          prevButton.classList.toggle('btn-outline-secondary', activeTabIndex !== 0);
+          // nextButton.disabled = activeTabIndex === tabs.length - 1;
+          nextButton.innerHTML = activeTabIndex === tabs.length - 1 ? 'Download' : 'Next';
+          nextButton.classList.toggle('btn-outline-primary', activeTabIndex !== tabs.length - 1);
+          nextButton.classList.toggle('btn-outline-success', activeTabIndex === tabs.length - 1);
+          nextButton.disabled = true;
+        }
+
+        // Next Button: Move to the next tab
+        nextButton.addEventListener('click', () => {
+          if (activeTabIndex < tabs.length - 1) {
+            activateTab(activeTabIndex + 1);
+            tabFuntion = tabFunctions[activeTabIndex - 1];
+            tabFuntion(metadata);
+          }
+        });
+
+        // Prev Button: Move to the previous tab
+        prevButton.addEventListener('click', () => {
+          if (activeTabIndex > 0) {
+            tabs[activeTabIndex].setAttribute('disabled', 'true');
+            activateTab(activeTabIndex - 1);
+            navIcons[activeTabIndex].src = '../static/icons/active_' + navIcons[activeTabIndex].src.split('/').pop().split('_').pop();
+          }
+        });
+
+        // Initial state: Disable Prev button on first load
+        prevButton.disabled = true;
+        nextButton.disabled = true;
+
+        tabs.forEach((tab, index) => {
+          tab.addEventListener('click', () => {
+            activeTabIndex = index;
+            if (index === 0) {
+              prevButton.disabled = true;
+              prevButton.classList.toggle('btn-outline-light', activeTabIndex === 0);
+              prevButton.classList.toggle('btn-outline-secondary', activeTabIndex !== 0);
+            }
+
+            nextButton.innerHTML = activeTabIndex === tabs.length - 1 ? 'Download' : 'Next';
+            nextButton.classList.toggle('btn-outline-primary', activeTabIndex !== tabs.length - 1);
+            nextButton.classList.toggle('btn-outline-success', activeTabIndex === tabs.length - 1);
+            // Loop through all tabs after the clicked tab and disable them
+            for (let i = index + 1; i < tabs.length; i++) {
+              tabs[i].setAttribute('disabled', 'true');
+              navIcons[i].src = '../static/icons/' + navIcons[i].src.split('/').pop().split('_').pop();
+            }
+          });
+        });
+      });
+    </script>
+    <script></script>
+  </body>
+</html>

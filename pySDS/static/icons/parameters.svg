@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+width="192" height="192" viewBox="0 0 256 256"
+fill="currentColor" >
+    <rect width="256" height="256" fill="none"></rect>
+    <line x1="64" y1="20" x2="64" y2="54" fill="none" stroke="currentColor"
+        stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
+    <circle cx="64" cy="74" r="20" stroke-width="8" stroke="currentColor" stroke-linecap="round"
+        stroke-linejoin="round" fill="none"></circle>
+    <line x1="64" y1="124" x2="64" y2="250" fill="none" stroke="currentColor"
+        stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
+    <line x1="128" y1="20" x2="128" y2="78" fill="none" stroke="currentColor"
+        stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
+    <circle cx="128" cy="128" r="20" stroke-width="8" stroke="currentColor"
+        stroke-linecap="round" stroke-linejoin="round" fill="none"></circle>
+    <line x1="128" y1="148" x2="128" y2="250" fill="none" stroke="currentColor"
+        stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
+    <line x1="192" y1="20" x2="192" y2="142" fill="none" stroke="currentColor"
+        stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
+    <circle cx="192" cy="192" r="20" stroke-width="8" stroke="currentColor"
+        stroke-linecap="round" stroke-linejoin="round" fill="none"></circle>
+    <line x1="192" y1="212" x2="192" y2="250" fill="none" stroke="currentColor"
+        stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
+</svg>
